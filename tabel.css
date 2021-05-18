@@ -1,0 +1,56 @@
+
+body{
+    margin: 0; 
+    padding: 0;
+
+}
+.container {
+    width: 100%;
+    background:#252525;
+    min-height: 100vh;
+
+
+
+} 
+button {
+    cursor: pointer;
+    width:150px;
+    border: none;
+    background: #4CAF50;
+    color: #FFF;
+    padding: 10px;
+    font-size: 15px; 
+    margin-top: 20px;
+    margin-left: 385px;
+
+}
+
+button a{
+    text-decoration: none; 
+    color: white;
+}
+
+table {
+    width: 750px;
+    border-collapse: collapse;
+    margin: auto;
+    
+}
+
+tr:nth-of-type(odd) {
+    background: #eee;
+}
+
+th {
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 18px;
+}
