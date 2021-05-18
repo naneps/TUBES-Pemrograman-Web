@@ -38,7 +38,7 @@ $query = mysqli_query($connection,$sql);
                                 <td>".$row['menu']."</td>
                                 <td>".$row['harga']."</td>
                                 <td>
-                                <a href='formedit.php'>Edit</a> | <a href='proses/delete.php?id=".$row['id']."'>Hapus</a>
+                                <a href='formedit.php?id=".$row['id']."'>Edit</a> | <a href='proses/delete.php?id=".$row['id']."'>Hapus</a>
                                 </td> 
                             </tr>";
                         }
