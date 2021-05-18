@@ -38,7 +38,7 @@ $qry = mysqli_query($connection , $sql);
 
                     <fieldset>
                         <button name="submit" type="submit" id="submit"
-                            >Tambahkan</button>
+                            >Edit Datas</button>
                         
                             <a class="btn" href="tabel.php">Tampilkan Data</a>
                     </fieldset>

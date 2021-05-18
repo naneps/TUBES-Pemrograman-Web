@@ -46,7 +46,7 @@ $query = mysqli_query($connection,$sql);
 
                 </tbody>
             </table>
-            <button> <a href="form.html">Tambah Data</a> </button>
+            <button> <a href="form.php">Tambah Data</a> </button>
         </div>
     </body>
 
