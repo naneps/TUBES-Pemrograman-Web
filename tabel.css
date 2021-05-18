@@ -21,7 +21,7 @@ button {
     padding: 10px;
     font-size: 15px; 
     margin-top: 20px;
-    margin-left: 385px;
+    margin-left: 30px;
 
 }
 
@@ -37,8 +37,9 @@ table {
     
 }
 
-tr:nth-of-type(odd) {
-    background: #eee;
+tr {
+    background: #727272;
+    color: white;
 }
 
 th {
@@ -53,4 +54,5 @@ th {
     border: 1px solid #ccc;
     text-align: left;
     font-size: 18px;
+    
 }

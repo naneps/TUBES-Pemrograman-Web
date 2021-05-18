@@ -1,13 +1,15 @@
-<?
+<?php
 
 $servername ="localhost";
 $username ="root";
 $password ="";
-
-$connection = mysqli_connect($servername ,$username ,$password);
+$dbname = 'web_tahu_sumedang';
+$connection = mysqli_connect($servername ,$username ,$password,$dbname);
 
 if (!$connection){
-    die("Koneksi Gaga;" . mysqli_connect_error());
+    die("Koneksi Gagal" . mysqli_connect_error());
 }
-echo "Koneksi Sukses";
+
+
+
 ?>
