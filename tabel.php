@@ -1,5 +1,8 @@
 <?php 
-
+session_start();
+if(!$_SESSION['id_user']){
+header('location:login/login.php');
+}
 require_once 'proses/procedural.php';
 
 $sql = 'SELECT * FROM tb_menu';

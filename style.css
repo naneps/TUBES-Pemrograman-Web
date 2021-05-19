@@ -35,6 +35,12 @@ body {
     text-align: center;
     font-weight: 600;
     margin-top: 50px;
+} 
+
+.container h5.nama{
+    margin-top: 20px;
+    font-size: 32px;
+    color: white;
 }
 #data input[type="text"],
 #data textarea,
@@ -59,12 +65,13 @@ fieldset {
 }
 
 #data input[type="text"],
+#data input[type="text"]
 #data textarea {
     width: 100%;
     border: 1px solid #ccc;
     background: #FFF;
     margin: 0 0 5px;
-    padding: 10px;
+    padding: 10px; 
 }
 
 #data input[type="text"]:hover,

@@ -1,5 +1,9 @@
 
 <?php 
+session_start();
+if(!$_SESSION['id_user']){
+header('location:login/login.php');
+}
 require_once 'proses/procedural.php';
 if(isset($_POST['submit']) && $_POST['nama'] != '' && $_POST['harga']){
     $nama = $_POST['nama'];
@@ -27,6 +31,7 @@ if(isset($_POST['submit']) && $_POST['nama'] != '' && $_POST['harga']){
     <body>
 
         <div class="container">
+    <h5 class="nama">Hi ,<?=$_SESSION['nama'] ?></h5>
             <div class="judul">Tambah Data </div>
             <form id="data" action="" method="post" onsubmit="validasi()">
              
@@ -41,6 +46,7 @@ if(isset($_POST['submit']) && $_POST['nama'] != '' && $_POST['harga']){
                             >Tambahkan</button>
                         
                             <a class="btn" href="tabel.php">Tampilkan Data</a>
+                            <a class="btn" href="login/logout_action.php">Logout</a>
                     </fieldset>
             </form>
         </div>
