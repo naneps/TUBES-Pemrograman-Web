@@ -18,10 +18,11 @@ $query = mysqli_query($connection,$sql);
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="tabel.css">
-        <title>Document</title>
+        <title>Tabel</title>
     </head>
     <body>
         <div class="container">
+<button> <a href="form.php">Tambah Data</a> </button>
             <table>
                 <thead>
                     <tr>
@@ -49,7 +50,6 @@ $query = mysqli_query($connection,$sql);
 
                 </tbody>
             </table>
-            <button> <a href="form.php">Tambah Data</a> </button>
         </div>
     </body>
 

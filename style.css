@@ -55,15 +55,6 @@ body {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
  
-
-fieldset {
-    border: medium none !important;
-    margin: 0 0 10px;
-    min-width: 100%;
-    padding: 0;
-    width: 100%;
-}
-
 #data input[type="text"],
 #data input[type="text"]
 #data textarea {
@@ -91,13 +82,14 @@ fieldset {
     resize: none;
 }
 
-#data button[type="submit"] {
+#data button{
     cursor: pointer;
     width: 100%;
     border: none;
     background: #4CAF50;
     color: #FFF;
-    margin: 0 0 5px;
+    margin: auto;
+    margin-bottom: 20px;    
     padding: 10px;
     font-size: 15px;
 }

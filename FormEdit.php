@@ -19,8 +19,9 @@ $qry = mysqli_query($connection , $sql);
     <head>
         <link rel="stylesheet" href="style.css">
         <title>Form</title>
+    
     </head>
-
+    
     <body>
 
         <div class="container">
