@@ -6,7 +6,7 @@ body{
 }
 .container {
     width: 100%;
-    background:#252525;
+    background: #4CAF50;
     min-height: 100vh;
 
 
@@ -16,7 +16,7 @@ button {
     cursor: pointer;
     width:150px;
     border: none;
-    background: #4CAF50;
+    background: blue;
     color: #FFF;
     padding: 10px;
     font-size: 15px; 

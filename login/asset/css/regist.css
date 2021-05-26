@@ -79,7 +79,7 @@ input:hover {
 
  button {
     cursor: pointer;
-    width: 100%;
+    width: 50px;
     border: none;
     background: #4CAF50;
     color: #FFF;

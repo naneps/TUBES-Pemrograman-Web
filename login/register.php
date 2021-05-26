@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
-
     <head>
-        <!-- Load file CSS Bootstrap -->
-
         <link rel="stylesheet" href="regist.css">
         <title>Registrasi </title>
     </head>
-
     <body>
         <div class="container">
-
-
             <form method="post" action="regist_action.php">
                 <center>
                     <h2>Regist </h2>

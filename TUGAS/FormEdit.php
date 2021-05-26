@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if(!$_SESSION['id_user']){
@@ -19,15 +18,15 @@ $qry = mysqli_query($connection , $sql);
     <head>
         <link rel="stylesheet" href="style.css">
         <title>Form</title>
-    
+
     </head>
-    
+
     <body>
 
         <div class="container">
             <div class="judul">Edit Data </div>
             <form id="data" action="" method="post" onsubmit="validasi()">
-                        <?php 
+                <?php 
                         $data = array();
                             while($row = mysqli_fetch_array($qry) ){
                                 $data = $row;
@@ -35,18 +34,17 @@ $qry = mysqli_query($connection , $sql);
                             }
                         
                         ?>
-                    <input placeholder="Nama Menu" type="text" name="nama" id="nama" value="<?=$data['menu']?>">
-            
-              
-                    <input placeholder="Harga" type="text" name="harga" id="harga" value="<?=$data['harga']?>"> 
-              
+                <input placeholder="Nama Menu" type="text" name="nama" id="nama" value="<?=$data['menu']?>">
 
-                    <fieldset>
-                        <button name="submit" type="submit" id="submit"
-                            >Edit Datas</button>
-                        
-                            <a class="btn" href="tabel.php">Tampilkan Data</a>
-                    </fieldset>
+
+                <input placeholder="Harga" type="text" name="harga" id="harga" value="<?=$data['harga']?>">
+
+
+                <fieldset>
+                    <button name="submit" type="submit" id="submit">Edit Datas</button>
+
+                    <a class="btn" href="tabel.php">Tampilkan Data</a>
+                </fieldset>
             </form>
         </div>
         <?php
@@ -66,19 +64,19 @@ $qry = mysqli_query($connection , $sql);
         }
                 ?>
         <script type="text/javascript">
-	function validasi() {
-		let nama = document.getElementById("nama").value;
-		let harga = document.getElementById("harga").value;
+            function validasi() {
+                let nama = document.getElementById("nama").value;
+                let harga = document.getElementById("harga").value;
 
-		if (nama != "" && harga!="" ) {
-			return true;
-		}else{
-            alert('Data Harus Diisi');
-            returnToPreviousPage();
-            return false;
-		}
-	}
-</script>
+                if (nama != "" && harga != "") {
+                    return true;
+                } else {
+                    alert('Data Harus Diisi');
+                    returnToPreviousPage();
+                    return false;
+                }
+            }
+        </script>
     </body>
 
 </html>
