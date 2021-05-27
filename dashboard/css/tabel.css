@@ -1,0 +1,79 @@
+
+body{
+    margin: 0; 
+    padding: 0;
+
+}
+
+button {
+    cursor: pointer;
+    width:150px;
+    border: none;
+    background: blue;
+    color: #FFF;
+    padding: 10px;
+    font-size: 15px; 
+    margin-top: 20px;
+    margin-left:384px;
+    margin-bottom:1rem;
+
+
+}
+
+button a{
+    text-decoration: none; 
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+       box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+tr {
+    background: #ffffff;
+    color: black;
+    font-weight:500;
+
+}
+
+th {
+    background: #09012f;
+    color: white;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px solid #5d5d5d;
+    text-align: left;
+    font-size: 18px;
+    
+}
+
+.btn_edit{
+    background:lime;
+    display:inline-block;
+    width:80px;
+    padding:5px;
+    text-decoration:none;
+    color:white;
+    text-align:center;
+    font-weight:600;
+       
+}
+
+.btn_delete{
+    background:red;
+    display:inline-block;
+    width:80px;
+    padding:5px;
+    text-decoration:none;
+    color:white;
+    text-align:center;
+    font-weight:600;
+       
+}
