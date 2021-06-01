@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -75,7 +79,7 @@
           </tr>
         </thead>
         <tbody>
-
+          khkhk
         </tbody>
       </table>
     </div>
@@ -170,7 +174,7 @@
               menu.innerHTML = val['menu'];
               harga.innerHTML = val['harga'];
               detail.innerHTML = val['detail'];
-              action.innerHTML = val['action'];
+              // action.innerHTML = val['action'];
 
             }
           }
