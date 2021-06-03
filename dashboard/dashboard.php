@@ -79,7 +79,7 @@ session_start();
           </tr>
         </thead>
         <tbody>
-          khkhk
+
         </tbody>
       </table>
     </div>
@@ -113,7 +113,7 @@ session_start();
             var response = this.responseText;
             if (response == 1) {
               alert("Insert successfully.");
-
+              loadEmployees();
             }
           }
         };
@@ -168,17 +168,17 @@ session_start();
               var menu = NewRow.insertCell(1);
               var harga = NewRow.insertCell(2);
               var detail = NewRow.insertCell(3);
+              var img = NewRow.insertCell(4);
               var action = NewRow.insertCell(5);
 
               no.innerHTML = val['no'];
               menu.innerHTML = val['menu'];
               harga.innerHTML = val['harga'];
               detail.innerHTML = val['detail'];
-              // action.innerHTML = val['action'];
-
+              img.innerHTML = val['img'];
+              action.innerHTML = '  <a class="btn_edit" href="">UPDATE</a>  <a class="btn_delete" href="">DELETE</a>';
             }
           }
-
         }
       };
 

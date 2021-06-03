@@ -15,16 +15,15 @@ if ($request == 1) {
 
     $response = array();
     $no = 1;
-    //  <a class=' btn_edit' href='formedit.php?id=" . $row[' id'] . "'>Edit</a>  <a class='btn_delete' href='proses/delete.php?id=" . $row['id'] . "'>Hapus</a>
+    //    "<a class=' btn_edit' href='formedit.php?id=" . $row[' id'] . "'>Edit</a>  <a class='btn_delete' href='proses/delete.php?id=" . $row['id'] . "'>Hapus</a>";
     while ($row = mysqli_fetch_assoc($data)) {
-        $action = "BUTTON";
         $response[] = array(
             'no' => $no++,
             "menu" => $row['menu'],
             "harga" => $row['harga'],
             "detail" => $row['detail'],
             "img" => $row['img'],
-            'action' =>  $action
+
         );
     }
 

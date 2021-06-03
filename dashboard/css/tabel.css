@@ -16,8 +16,6 @@ button {
     margin-top: 20px;
     margin-left:384px;
     margin-bottom:1rem;
-
-
 }
 
 button a{
@@ -63,7 +61,11 @@ th {
     color:white;
     text-align:center;
     font-weight:600;
-       
+
+}
+.btn_edit:hover{
+    background:#05ce00;
+
 }
 
 .btn_delete{
@@ -75,5 +77,7 @@ th {
     color:white;
     text-align:center;
     font-weight:600;
-       
+}
+.btn_delete:hover{
+    background:#a40004;
 }
