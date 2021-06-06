@@ -45,6 +45,7 @@ header{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .sidebar .profile_info .profile_image{
@@ -58,6 +59,7 @@ header{
   color: #ccc;
   margin-top: 0;
   margin-bottom: 20px;
+  font-size: 14px;
 }
 
 .sidebar a{
