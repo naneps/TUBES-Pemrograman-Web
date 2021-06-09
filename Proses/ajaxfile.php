@@ -34,13 +34,26 @@ if ($request == 1) {
 if ($request == 2) {
 
 
-    // Read POST data
-    $data = json_decode(file_get_contents("php://input"));
 
-    $menu = $data->menu;
-    $harga = $data->harga;
-    $detail = $data->detail;
-    $img = $data->img;
+
+    // Read POST data
+    // $data = json_decode(file_get_contents("php://input"));
+
+    // $menu = $data->menu;
+    // $harga = $data->harga;
+    // $detail = $data->detail;
+    // $img = $data->img;
+    $menu = $_POST['menu'];
+    $harga = $_POST['harga'];
+    $detail = $_POST['detail'];
+
+    $namafile = $_FILES['img']['name'];
+    $ukuranfile = $_FILES['img']['size'];
+    $error = $_FILES['img']['error'];
+    $tmpname = $_FILES['img']['tmp_name'];
+
+
+    $ekstensiGambar = $namafile[];
 
     // Insert record
 

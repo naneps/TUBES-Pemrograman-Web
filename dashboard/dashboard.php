@@ -67,7 +67,7 @@ if (!$_SESSION['id_user']) {
         <input placeholder="Nama Menu" type="text" name="menu" id="menu">
         <input placeholder="Harga" type="text" name="harga" id="harga">
         <input placeholder="detail" type="text" name="detail" id="detail">
-        <input placeholder="img" type="text" name="img" id="img">
+        <input placeholder="img" type="file" name="img" id="img">
         <button name="submit" type="submit" id="submit" onclick="validasi()">Tambahkan</button>
       </div>
     </div>
@@ -99,27 +99,27 @@ if (!$_SESSION['id_user']) {
     </script>
     <script type="text/javascript">
       function validasi() {
-        var menu = document.getElementById("menu").value;
-        var harga = document.getElementById("harga").value;
-        var detail = document.getElementById("detail").value;
-        var img = document.getElementById("img").value;
-        var msg = document.getElementById('alert');
+        let menu = document.getElementById("menu").value;
+        let harga = document.getElementById("harga").value;
+        let detail = document.getElementById("detail").value;
+        let img = document.getElementById("img").value;
+        let msg = document.getElementById('alert');
 
         if (menu != "" && harga != "") {
-          var xhttp = new XMLHttpRequest();
+          let xhttp = new XMLHttpRequest();
           xhttp.open("POST", "../proses/ajaxfile.php", true);
           xhttp.setRequestHeader("Content-Type", "application/json");
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               // Response
-              var response = this.responseText;
+              let response = this.responseText;
               if (response == 1) {
                 alert("Insert successfully.");
                 loadEmployees();
               }
             }
           };
-          var data = {
+          let data = {
             menu: menu,
             harga: harga,
             detail: detail,
@@ -133,11 +133,47 @@ if (!$_SESSION['id_user']) {
         }
       }
 
+
+      function insert() {
+
+        let menu = document.getElementById("menu").value;
+        let harga = document.getElementById("harga").value;
+        let detail = document.getElementById("detail").value;
+        let files = document.getElementById("img").value;
+
+        if (files.lenght > 0) {
+          var formData = new formData();
+
+          formData.append("img", files[0]);
+          formData.append("harga", harga);
+          formData.append("detail", detail);
+          formData.append("menu", menu);
+
+          var xhrrp = new XMLHttpRequest();
+          xhttp.open("POST", "../Proses/ajaxfile.php", true);
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              var response = this.responseText;
+              if (response == 1) {
+                alert("Upload sukses")
+              } else {
+                alert("upload gagal")
+              }
+            }
+          };
+          xhttp.send(formData);
+        } else {
+          alert("Pilih Gambar");
+        }
+
+      }
+
+
       loadEmployees();
 
       // Load records with GET request
       function loadEmployees() {
-        var xhttp = new XMLHttpRequest();
+        let xhttp = new XMLHttpRequest();
 
         // Set GET method and ajax file path with parameter
         xhttp.open("GET", "../proses/ajaxfile.php?request=1", true);
@@ -150,10 +186,10 @@ if (!$_SESSION['id_user']) {
           if (this.readyState == 4 && this.status == 200) {
 
             // Parse this.responseText to JSON object
-            var response = JSON.parse(this.responseText);
+            let response = JSON.parse(this.responseText);
 
             // Select <table id='empTable'> <tbody>
-            var empTable =
+            let empTable =
               document.getElementById("empTable").getElementsByTagName("tbody")[0];
 
             // Empty the table <tbody>
@@ -162,16 +198,16 @@ if (!$_SESSION['id_user']) {
             // Loop on response object
             for (var key in response) {
               if (response.hasOwnProperty(key)) {
-                var val = response[key];
+                let val = response[key];
 
                 // insert new row
-                var NewRow = empTable.insertRow(-1);
-                var no = NewRow.insertCell(0);
-                var menu = NewRow.insertCell(1);
-                var harga = NewRow.insertCell(2);
-                var detail = NewRow.insertCell(3);
-                var img = NewRow.insertCell(4);
-                var action = NewRow.insertCell(5);
+                let NewRow = empTable.insertRow(-1);
+                let no = NewRow.insertCell(0);
+                let menu = NewRow.insertCell(1);
+                let harga = NewRow.insertCell(2);
+                let detail = NewRow.insertCell(3);
+                let img = NewRow.insertCell(4);
+                let action = NewRow.insertCell(5);
 
                 no.innerHTML = val['no'];
                 menu.innerHTML = val['menu'];
