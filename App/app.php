@@ -58,7 +58,7 @@ $query = mysqli_query($con, $sql);
             <div class="home__container bd-container bd-grid">
                 <div class="home__data">
                     <h1 class="home__title">Tahu Gak ?</h1>
-                    <h2 class="home__subtitle">Berbagao menu Tahu .</h2>
+                    <h2 class="home__subtitle">Berbagai menu Tahu .</h2>
                     <a href="#" class="button">Lihat Menu</a>
                 </div>
                 <img src="assets/img/tahu.jpg" alt="" class="home__img">
@@ -78,11 +78,11 @@ $query = mysqli_query($con, $sql);
                 <img src="assets/img/about.jpg" alt="" class="about__img">
             </div>
         </section>
-        Z
+
         <!--========== SERVICES ==========-->
         <section class="services section bd-container" id="services">
             <span class="section-subtitle">Layanan</span>
-            <h2 class="section-title">Our amazing services</h2>
+            <h2 class="section-title">Pelayanan Kami</h2>
 
             <div class="services__container  bd-grid">
                 <div class="services__content">
@@ -100,7 +100,7 @@ $query = mysqli_query($con, $sql);
 
                 <div class="services__content">
                     <img src="" alt="ICON">
-                    <h3 class="services__title">Delivery</h3>
+                    <h3 class="services__title">Pengiriman Pesanan</h3>
                     <p class="services__description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint
                         vero ex natus sapiente cumque asperiores!</p>
                 </div>
@@ -165,21 +165,13 @@ $query = mysqli_query($con, $sql);
             <div class="footer__content">
                 <h3 class="footer__title">Layanan</h3>
                 <ul>
-                    <li><a href="#" class="footer__link">Delivery</a></li>
-                    <li><a href="#" class="footer__link">Pricing</a></li>
-                    <li><a href="#" class="footer__link">Fast food</a></li>
+                    <li><a href="#" class="footer__link">Pengiriman Makanan</a></li>
+                    <li><a href="#" class="footer__link"> </a></li>
+                    <li><a href="#" class="footer__link">Cepat Saji</a></li>
                 </ul>
             </div>
 
-            <div class="footer__content">
-                <h3 class="footer__title">Infprmasi</h3>
-                <ul>
-                    <li><a href="#" class="footer__link">Event</a></li>
-                    <li><a href="#" class="footer__link">Contact us</a></li>
-                    <li><a href="#" class="footer__link">Privacy policy</a></li>
-                    <li><a href="#" class="footer__link">Terms of services</a></li>
-                </ul>
-            </div>
+
 
             <div class="footer__content">
                 <h3 class="footer__title">Alamat</h3>

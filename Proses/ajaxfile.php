@@ -1,12 +1,14 @@
 <?php
 include 'procedural.php';
 
-$request = 2;
+
+$request = 3;
 
 // Read $_GET value
 if (isset($_GET['request'])) {
     $request = $_GET['request'];
 }
+
 if ($request == 1) {
 
     // Select record 
@@ -33,16 +35,6 @@ if ($request == 1) {
 // POST
 if ($request == 2) {
 
-
-
-
-    // Read POST data
-    // $data = json_decode(file_get_contents("php://input"));
-
-    // $menu = $data->menu;
-    // $harga = $data->harga;
-    // $detail = $data->detail;
-    // $img = $data->img;
     $menu = $_POST['menu'];
     $harga = $_POST['harga'];
     $detail = $_POST['detail'];
@@ -53,15 +45,25 @@ if ($request == 2) {
     $tmpname = $_FILES['img']['tmp_name'];
 
 
-    $ekstensiGambar = $namafile[];
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambar = explode('.', $namafile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
 
+    $namafilebaru = uniqid();
+    $namafilebaru .= '.';
+    $namafilebaru .= $ekstensiGambar;
+
+    move_uploaded_file($tmpname, '../../image/' . $namafilebaru);
+
+    $response = 0;
     // Insert record
 
-    $sql = "INSERT INTO  tb_menu (menu, harga , detail , img) VALUES('$menu','$harga' ,'$detail' , '$img' )";
+    $query = $con->query("INSERT INTO  tb_menu (menu, harga , detail , img) VALUES('$menu','$harga' ,'$detail','$namafilebaru' ) ");
 
-    if (mysqli_query($con, $sql)) {
-        echo 1;
-    } else {
-        echo 0;
+    if ($query != 0) {
+        $response = 1;
     }
+
+    echo $response;
+    exit;
 }

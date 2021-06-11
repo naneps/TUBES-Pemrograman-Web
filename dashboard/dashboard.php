@@ -68,7 +68,7 @@ if (!$_SESSION['id_user']) {
         <input placeholder="Harga" type="text" name="harga" id="harga">
         <input placeholder="detail" type="text" name="detail" id="detail">
         <input placeholder="img" type="file" name="img" id="img">
-        <button name="submit" type="submit" id="submit" onclick="validasi()">Tambahkan</button>
+        <button name="submit" type="submit" id="submit" onclick="insert()">Tambahkan</button>
       </div>
     </div>
     <div class="card">
@@ -133,40 +133,56 @@ if (!$_SESSION['id_user']) {
         }
       }
 
-
       function insert() {
 
         let menu = document.getElementById("menu").value;
         let harga = document.getElementById("harga").value;
         let detail = document.getElementById("detail").value;
-        let files = document.getElementById("img").value;
+        let files = document.getElementById("img").files;
 
-        if (files.lenght > 0) {
-          var formData = new formData();
+
+        if (files.length > 0) {
+          let formData = new FormData();
 
           formData.append("img", files[0]);
           formData.append("harga", harga);
           formData.append("detail", detail);
           formData.append("menu", menu);
 
-          var xhrrp = new XMLHttpRequest();
-          xhttp.open("POST", "../Proses/ajaxfile.php", true);
+
+          let xhttp = new XMLHttpRequest();
+
+          xhttp.open("POST", "http://localhost/tubes-Pemrograman-web/Proses/ajaxfile.php?request=2", true);
+
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-              var response = this.responseText;
+              let response = this.responseText;
+
               if (response == 1) {
-                alert("Upload sukses")
+                alert("Upload Sukses");
+
+                loadEmployees();
+
+
+                document.getElementById("menu").value = "";
+                document.getElementById("harga").value = "";
+                document.getElementById("detail").value = "";
+                document.getElementById("img").value = "";
+
               } else {
-                alert("upload gagal")
+                alert("Upload Gagal");
+
               }
             }
           };
+
           xhttp.send(formData);
-        } else {
-          alert("Pilih Gambar");
+
         }
 
       }
+
+
 
 
       loadEmployees();
