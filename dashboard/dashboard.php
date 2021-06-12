@@ -64,11 +64,16 @@ if (!$_SESSION['id_user']) {
     <div class="card">
       <div class="judul">Tambah Data </div>
       <div id="data">
+        <input type="hidden" id="id_menu">
+        <input type="hidden" id="gambar_lama" >
         <input placeholder="Nama Menu" type="text" name="menu" id="menu">
         <input placeholder="Harga" type="text" name="harga" id="harga">
         <input placeholder="detail" type="text" name="detail" id="detail">
         <input placeholder="img" type="file" name="img" id="img">
-        <button name="submit" type="submit" id="submit" onclick="insert()">Tambahkan</button>
+        <label for="image" id="label_gambar" hidden> Gambar Produk </label>
+        <div id="ambil_gambar"></div>
+        <button name="submit" id="btn" onclick="insert()">Tambahkan</button>
+        <button name="simpan" id="btn_update" onclick="update()" hidden> Simpan </button>
       </div>
     </div>
     <div class="card">
@@ -98,11 +103,52 @@ if (!$_SESSION['id_user']) {
       });
     </script>
     <script type="text/javascript">
+      loadEmployees();
+
+      function edit(id_menu) {
+        let gambar_lama = document.getElementById('gambar_lama');
+        let menu = document.getElementById('menu');
+        let harga = document.getElementById("harga");
+        let ambil_gambar = document.getElementById("ambil_gambar");
+        let label_gambar = document.getElementById("label_gambar");
+        let btn = document.getElementById('btn');
+        let btn_edit = document.getElementById('btn_edit');
+        let btn_update = document.getElementById('btn_update');
+        
+        label_gambar.hidden = false;
+        btn.hidden = true;
+        btn_update.hidden = false;
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "../proses/ajaxfile.php?request=4&id_menu="+id_menu, true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            let response = JSON.parse(this.responseText);
+            for (let key in response) {
+              if (response.hasOwnProperty(key)) {
+                let val = response[key];
+                menu.value = val['menu'];
+                harga.value = val['harga'];
+                detail.value = val['detail'];
+                if (val['img'] == "") {
+                  document.getElementById("ambil_gambar").value = '1';
+                } else {
+                  document.getElementById("gambar_lama").value = val['img'];
+                  document.getElementById("ambil_gambar").innerHTML = '<img width="100" src="image/'+val['img']+'">';
+                }
+                document.getElementById("id_menu").value = val['id_menu'];
+              }
+            } 
+          }
+        };
+        xhttp.send();
+      }
+
       function validasi() {
         let menu = document.getElementById("menu").value;
         let harga = document.getElementById("harga").value;
         let detail = document.getElementById("detail").value;
-        let img = document.getElementById("img").value;
+        let img = document.getElementById("img").files;
         let msg = document.getElementById('alert');
 
         if (menu != "" && harga != "") {
@@ -134,60 +180,100 @@ if (!$_SESSION['id_user']) {
       }
 
       function insert() {
-
-        let menu = document.getElementById("menu").value;
-        let harga = document.getElementById("harga").value;
-        let detail = document.getElementById("detail").value;
-        let files = document.getElementById("img").files;
-
+        let menu = document.getElementById('menu').value;
+        let harga = document.getElementById('harga').value;
+        let detail = document.getElementById('detail').value;
+        let files = document.getElementById('img').files;
 
         if (files.length > 0) {
           let formData = new FormData();
-
           formData.append("img", files[0]);
+          formData.append("menu", menu);
           formData.append("harga", harga);
           formData.append("detail", detail);
-          formData.append("menu", menu);
-
-
           let xhttp = new XMLHttpRequest();
-
-          xhttp.open("POST", "http://localhost/tubes-Pemrograman-web/Proses/ajaxfile.php?request=2", true);
-
+          xhttp.open("POST", "../Proses/ajaxfile.php?request=2", true);
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              let response = this.responseText;
+              if (response == 1) {
+                alert("Upload Sukses");
+                loadEmployees();
+                document.getElementById("menu").value = "";
+                document.getElementById("harga").value = "";
+                document.getElementById("detail").value = "";
+                document.getElementById("img").value = "";
+              } else {
+                alert("Upload Gagal");
+              }
+            }
+          };
+          xhttp.send(formData);
+        }
+      }
+      function hapus(id_menu) {
+        let xhttp = new XMLHttpRequest();
+        let konfirmasi = confirm("Yakin ? Mau di Hapus ?");
+        if (konfirmasi) {
+          xhttp.open("GET", "../Proses/ajaxfile.php?request=3&id_menu="+id_menu, true);
+          xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               let response = this.responseText;
+              if(response == 1){
+                alert("Delete successfully.");
+                loadEmployees();
+              }
+            }
+          };
+          xhttp.send();
+        }
+      }
 
+      function update() {
+        let id_menu = document.getElementById('id_menu').value;
+        let menu = document.getElementById('menu').value;
+        let harga = document.getElementById('harga').value;
+        let detail = document.getElementById('detail').value;
+        let gambar_lama = document.getElementById('gambar_lama').value;
+        let files = document.getElementById('img').files;
+        if (files.length > 0) {
+          let formData = new FormData();
+          formData.append("img", files[0]);
+          formData.append("id_menu", id_menu);
+          formData.append("menu", menu);
+          formData.append("harga", harga);
+          formData.append("detail", detail);
+          formData.append("gambar_lama", gambar_lama);
+
+          let xhttp = new XMLHttpRequest();
+          xhttp.open("POST", "../Proses/ajaxfile.php?request=5", true);
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              let response = this.responseText;
               if (response == 1) {
                 alert("Upload Sukses");
-
                 loadEmployees();
 
-
+                document.getElementById("id_menu").value = '';
+                document.getElementById("gambar_lama").value = "";
                 document.getElementById("menu").value = "";
                 document.getElementById("harga").value = "";
                 document.getElementById("detail").value = "";
                 document.getElementById("img").value = "";
 
+                btn.hidden = false;
+                btn_update.hidden = true;
               } else {
                 alert("Upload Gagal");
-
               }
             }
           };
-
           xhttp.send(formData);
-
         }
-
       }
+      
 
-
-
-
-      loadEmployees();
-
-      // Load records with GET request
       function loadEmployees() {
         let xhttp = new XMLHttpRequest();
 
@@ -206,7 +292,7 @@ if (!$_SESSION['id_user']) {
 
             // Select <table id='empTable'> <tbody>
             let empTable =
-              document.getElementById("empTable").getElementsByTagName("tbody")[0];
+            document.getElementById("empTable").getElementsByTagName("tbody")[0];
 
             // Empty the table <tbody>
             empTable.innerHTML = "";
@@ -229,8 +315,8 @@ if (!$_SESSION['id_user']) {
                 menu.innerHTML = val['menu'];
                 harga.innerHTML = val['harga'];
                 detail.innerHTML = val['detail'];
-                img.innerHTML = val['img'];
-                action.innerHTML = '  <a class="btn_edit" href="">UPDATE</a>  <a class="btn_delete" href="">DELETE</a>';
+                img.innerHTML = '<img width="100" src="../image/'+val['img']+'">';
+                action.innerHTML = '<button onclick="edit('+ val['id_menu'] +')" class="btn_edit">UPDATE</button>  <button onclick="hapus('+ val['id_menu'] +')" class="btn_delete">DELETE</button>';
               }
             }
           }
@@ -241,6 +327,6 @@ if (!$_SESSION['id_user']) {
       }
     </script>
 
-</body>
+  </body>
 
-</html>
+  </html>

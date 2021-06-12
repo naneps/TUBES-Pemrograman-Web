@@ -119,7 +119,7 @@ $query = mysqli_query($con, $sql);
                 while ($row = mysqli_fetch_array($query)) {
                     echo
                     "<div class='menu__content'>
-                                <img src='assets/img/product/" . $row['img'] . "' alt='gambar' class='menu__img'>
+                                <img src='../image/" . $row['img'] . "' alt='gambar' class='menu__img'>
                                 <h3 class='menu__name'>" . $row['menu'] . "</h3>
                                 <span class='menu__detail'>" . $row['detail'] . "</span>
                                 <span class='menu__preci'>Rp." . $row['harga'] . "</span>

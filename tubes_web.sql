@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2021 at 12:02 PM
+-- Generation Time: Jun 12, 2021 at 09:29 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_menu` (
-  `id` int(11) NOT NULL,
+  `id_menu` int(11) NOT NULL,
   `menu` varchar(50) NOT NULL,
   `harga` int(15) NOT NULL,
   `detail` text NOT NULL,
@@ -40,24 +40,9 @@ CREATE TABLE `tb_menu` (
 -- Dumping data for table `tb_menu`
 --
 
-INSERT INTO `tb_menu` (`id`, `menu`, `harga`, `detail`, `img`) VALUES
-(23, 'Tahu Krispi', 5000, 'Enak Sekali', 'tahu.jpg'),
-(24, 'tahu walik', 5000, 'dkajsh kaj k ', 'tahu.jpg'),
-(25, 'Tahu Setan', 6000, 'Pedes bangettt', 'tahu.jpg'),
-(26, 'madya', 1000, 'enak Sekalifa', '12344'),
-(27, 'dlskada', 0, 'sad', 'sadsa'),
-(28, 'ldsklfka', 0, 'sadklnalfk', 'slkfaflak'),
-(29, 'tahu', 10000, 'loremipsum', 'dada'),
-(30, 'kesfksd', 0, 'klsml', 'lkdsfmlk'),
-(31, 'kdnklsa', 5000, 'dkajsh kaj k ', 'lklksc'),
-(32, 'kdnklsa', 5000, 'dkajsh kaj k ', 'lklksc'),
-(33, 'dlsajla', 0, 'lkmfdsl', 'lmld'),
-(34, 'tahu  bulat ', 0, 'dadakan', 'limaratusan'),
-(35, 'ksdjasi', 0, 'lskdkla', 'clknkacl'),
-(36, '11', 1, 'Pedes bangettt', '60c30fd53be6f.jpg'),
-(37, '', 0, '', '60c3100a008a0.'),
-(38, '2', 222, '2', '60c310b701560.jpg'),
-(39, '', 0, '', '60c312af650f8.');
+INSERT INTO `tb_menu` (`id_menu`, `menu`, `harga`, `detail`, `img`) VALUES
+(40, 'Tahu Kuah', 5000, 'Gurih Gurih', '60c42e3bd457c.jpg'),
+(41, 'Tahu Balado', 5000, 'Pedes gila', '60c4613577849.jpeg');
 
 -- --------------------------------------------------------
 
@@ -90,7 +75,7 @@ INSERT INTO `user` (`id_user`, `username`, `nama`, `email`, `password`) VALUES
 -- Indexes for table `tb_menu`
 --
 ALTER TABLE `tb_menu`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_menu`);
 
 --
 -- Indexes for table `user`
@@ -106,7 +91,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `tb_menu`
 --
 ALTER TABLE `tb_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `user`
