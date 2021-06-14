@@ -65,7 +65,7 @@ if (!$_SESSION['id_user']) {
       <div class="judul">Tambah Data </div>
       <div id="data">
         <input type="hidden" id="id_menu">
-        <input type="hidden" id="gambar_lama" >
+        <input type="hidden" id="gambar_lama">
         <input placeholder="Nama Menu" type="text" name="menu" id="menu">
         <input placeholder="Harga" type="text" name="harga" id="harga">
         <input placeholder="detail" type="text" name="detail" id="detail">
@@ -77,7 +77,7 @@ if (!$_SESSION['id_user']) {
       </div>
     </div>
     <div class="card">
-      <table id='empTable'>
+      <table id='empTable' collpadding="10">
         <thead>
           <tr>
             <th>No</th>
@@ -114,12 +114,12 @@ if (!$_SESSION['id_user']) {
         let btn = document.getElementById('btn');
         let btn_edit = document.getElementById('btn_edit');
         let btn_update = document.getElementById('btn_update');
-        
+
         label_gambar.hidden = false;
         btn.hidden = true;
         btn_update.hidden = false;
         let xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "../proses/ajaxfile.php?request=4&id_menu="+id_menu, true);
+        xhttp.open("GET", "../proses/ajaxfile.php?request=4&id_menu=" + id_menu, true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -134,11 +134,11 @@ if (!$_SESSION['id_user']) {
                   document.getElementById("ambil_gambar").value = '1';
                 } else {
                   document.getElementById("gambar_lama").value = val['img'];
-                  document.getElementById("ambil_gambar").innerHTML = '<img width="100" src="image/'+val['img']+'">';
+                  document.getElementById("ambil_gambar").innerHTML = '<img width="100" src="image/' + val['img'] + '">';
                 }
                 document.getElementById("id_menu").value = val['id_menu'];
               }
-            } 
+            }
           }
         };
         xhttp.send();
@@ -193,7 +193,7 @@ if (!$_SESSION['id_user']) {
           formData.append("detail", detail);
           let xhttp = new XMLHttpRequest();
           xhttp.open("POST", "../Proses/ajaxfile.php?request=2", true);
-          xhttp.onreadystatechange = function () {
+          xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               let response = this.responseText;
               if (response == 1) {
@@ -211,16 +211,17 @@ if (!$_SESSION['id_user']) {
           xhttp.send(formData);
         }
       }
+
       function hapus(id_menu) {
         let xhttp = new XMLHttpRequest();
         let konfirmasi = confirm("Yakin ? Mau di Hapus ?");
         if (konfirmasi) {
-          xhttp.open("GET", "../Proses/ajaxfile.php?request=3&id_menu="+id_menu, true);
+          xhttp.open("GET", "../Proses/ajaxfile.php?request=3&id_menu=" + id_menu, true);
           xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               let response = this.responseText;
-              if(response == 1){
+              if (response == 1) {
                 alert("Delete successfully.");
                 loadEmployees();
               }
@@ -248,7 +249,7 @@ if (!$_SESSION['id_user']) {
 
           let xhttp = new XMLHttpRequest();
           xhttp.open("POST", "../Proses/ajaxfile.php?request=5", true);
-          xhttp.onreadystatechange = function () {
+          xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               let response = this.responseText;
               if (response == 1) {
@@ -272,7 +273,7 @@ if (!$_SESSION['id_user']) {
           xhttp.send(formData);
         }
       }
-      
+
 
       function loadEmployees() {
         let xhttp = new XMLHttpRequest();
@@ -292,7 +293,7 @@ if (!$_SESSION['id_user']) {
 
             // Select <table id='empTable'> <tbody>
             let empTable =
-            document.getElementById("empTable").getElementsByTagName("tbody")[0];
+              document.getElementById("empTable").getElementsByTagName("tbody")[0];
 
             // Empty the table <tbody>
             empTable.innerHTML = "";
@@ -315,8 +316,8 @@ if (!$_SESSION['id_user']) {
                 menu.innerHTML = val['menu'];
                 harga.innerHTML = val['harga'];
                 detail.innerHTML = val['detail'];
-                img.innerHTML = '<img width="100" src="../image/'+val['img']+'">';
-                action.innerHTML = '<button onclick="edit('+ val['id_menu'] +')" class="btn_edit">UPDATE</button>  <button onclick="hapus('+ val['id_menu'] +')" class="btn_delete">DELETE</button>';
+                img.innerHTML = '<img width="100" src="../image/' + val['img'] + '">';
+                action.innerHTML = '<button onclick="edit(' + val['id_menu'] + ')" class="btn_edit">UPDATE</button>  <button onclick="hapus(' + val['id_menu'] + ')" class="btn_delete">DELETE</button>';
               }
             }
           }
@@ -327,6 +328,6 @@ if (!$_SESSION['id_user']) {
       }
     </script>
 
-  </body>
+</body>
 
-  </html>
+</html>
