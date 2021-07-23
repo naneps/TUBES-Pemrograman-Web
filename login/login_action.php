@@ -3,8 +3,8 @@ session_start();
 
 include "koneksi.php";
 
-$username = $_POST["username"];
-$p = md5($_POST["password"]);
+$username = htmlspecialchars($_POST["username"]);
+$p = htmlspecialchars(md5($_POST["password"]));
 
 
 $sql = "select * from user where username='" . $username . "' and password='" . $p . "' limit 1";
@@ -14,12 +14,17 @@ $jumlah = mysqli_num_rows($hasil);
 
 if ($jumlah > 0) {
 	$row = mysqli_fetch_assoc($hasil);
-	$_SESSION["id_user"] = $row["id_user"];
+	$_SESSION["id_user"] =  $row["id_user"];
 	$_SESSION["username"] = $row["username"];
 	$_SESSION["nama"] = $row["nama"];
 	$_SESSION["email"] = $row["email"];
-
-	header("Location:../dashboard/dashboard.php");
+	echo "
+    <script> alert('Login Berhasil!'); 
+	document.location.href='../dashboard/dashboard.php';
+    </script>";
 } else {
-	echo "Username atau password salah <br><a href='login.php'>Kembali</a>";
+	echo "
+    <script> alert('Login gagal!'); 
+	document.location.href='login.php';
+    </script>";
 }

@@ -2,10 +2,10 @@
 
 include 'koneksi.php';
 
-$nama = $_POST['nama'];
-$email = $_POST['email'];
-$username = $_POST['username'];
-$password =md5($_POST['password']);
+$nama = htmlspecialchars($_POST['nama']) ;
+$email = htmlspecialchars($_POST['email']) ;
+$username = htmlspecialchars($_POST['username']) ;
+$password = htmlspecialchars(md5($_POST['password']) );
 
 if($nama !='' && $email !=''&& $username !='' && $password !='' ){
 
@@ -24,5 +24,3 @@ else{
     window.location='register.php';
     </script>";
 }
-
-?>

@@ -77,7 +77,7 @@ if (!$_SESSION['id_user']) {
       </div>
     </div>
     <div class="card">
-      <table id='empTable' collpadding="10">
+      <table id='empTable' cellpadding='10' cellspacing='0'>
         <thead>
           <tr>
             <th>No</th>
@@ -97,7 +97,7 @@ if (!$_SESSION['id_user']) {
 
     <script type="text/javascript">
       $(document).ready(function() {
-        $('.nav_btn').click(function() {
+        $(' .nav_btn').click(function() {
           $('.mobile_nav_items').toggleClass('active');
         });
       });
@@ -317,7 +317,7 @@ if (!$_SESSION['id_user']) {
                 harga.innerHTML = val['harga'];
                 detail.innerHTML = val['detail'];
                 img.innerHTML = '<img width="100" src="../image/' + val['img'] + '">';
-                action.innerHTML = '<button onclick="edit(' + val['id_menu'] + ')" class="btn_edit">UPDATE</button>  <button onclick="hapus(' + val['id_menu'] + ')" class="btn_delete">DELETE</button>';
+                action.innerHTML = '<a onclick="edit(' + val['id_menu'] + ')" class="btn_edit">UPDATE</a>  <a onclick="hapus(' + val['id_menu'] + ')" class="btn_delete">DELETE</b>';
               }
             }
           }
